@@ -1,0 +1,526 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&family=Work+Sans:ital,wght@1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&family=Work+Sans:ital,wght@1,700&display=swap'); */
+
+/* VARIABLES */
+:root {
+    --clr-neutral-900: hsl(207, 19%, 9%);
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-accent-400: hsl(152, 90%, 61%);
+    --padding: .5rem;
+    --texto-primario: 'Roboto', sans-serif
+     'Work Sans', sans-serif;
+    --color-gold:rgb(156, 146, 9);
+    --shadow-txt: 0 .1rem .2rem black;
+    --lg-background: linear-gradient(rgba(245, 2, 2, 0.164) 50%,rgba(5, 28, 37, 0.219) 100%);
+
+} 
+
+/* NORMALIZACIÓN */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ESTILOS GENERALES */
+body {
+    background: var(--clr-neutral-900);
+    font-family: var(--texto-primario);
+}
+
+/* ENCABEZADO DE PÁGINA */
+header {
+    background: var(--clr-neutral-900);
+    height: 20vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--color-gold);
+    font-size: 3.5rem;
+    box-shadow: 0 .2rem .9rem black;
+    text-shadow: 0 .2rem .8rem black;
+}
+
+#logo {
+    width: 14rem;
+}
+
+
+/* BARRA DE NAVEGACIÓN */
+nav {
+    background: hsl(0 0% 0% / 0.5);
+    box-shadow: 0 .2rem .9rem;
+    height: 11vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 3rem;
+    padding-right: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-gold);
+    font-size: 1.3rem;
+}
+
+nav a.active {
+    background: hsla(210, 17%, 9%, 0.877);
+    border-radius: .50rem;
+    padding: .5rem;
+    box-shadow: 0 .2rem .5rem black;
+}
+
+nav a:hover {
+    background: var(--clr-neutral-900);
+    border-radius: .50rem;
+    padding: .5rem;
+    box-shadow: 0 .2rem .5rem black;
+    transition-duration: .6s;
+    transition-delay: .1s;
+}
+
+/* CONTENIDO PRINCIPAL */
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background: var(--clr-neutral-900); */
+    height: 70vh;
+    box-shadow: 0 .1rem .5rem black;
+    border-radius: .30rem;
+    background: var(--lg-background);
+    background-blend-mode:darken;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    color: var(--color-gold);
+    padding: .5rem;
+    font-size: 2rem;
+    text-shadow: 0 .2rem .5rem black;
+    height: 8vh;
+    box-shadow: 0 .1rem .5rem black;
+    border-radius: .30rem;
+
+}
+
+/* CARD STYLES */
+.card {
+    color: var(--clr-neutral-100);
+    background-image: url(/assets/front-player-612x612.jpg);
+    background-size: cover;
+    background-position-x: 15%;
+    padding: 10rem 0 0;
+    width: 16rem;
+    height: 42vh;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 500ms ease;
+    text-shadow: 0 .2rem .5rem black;
+    font-weight: bolder;
+}
+
+.card:hover,
+.card:focus-within {
+    transform: scale(1.05);
+}
+
+.card-content {
+    --padding: .9rem;
+    padding: var(--padding);
+    background: linear-gradient(
+        hsl(0 0% 0% / 0),
+        hsl(20 0% 0% / .3) 20%,
+        hsl(0 0% 0% / 1)
+    );
+    transform: translateY(70%);
+    transition: transform 500ms ease;
+}
+
+.card:hover .card-content, 
+.card:focus-within .card-content{
+    transform: translateY(0);
+    transition-delay: 500ms;
+}
+
+.card-content > *:not(.card-title) {
+    opacity: 0;
+    transition: opacity 500ms linear;
+    margin: 1rem;
+}
+
+.card:focus-within .card-content {
+    transition-duration: 0ms;
+}
+
+.card:hover .card-content > *:not(.card-title) {
+    opacity: 1;
+    transition-delay: 1000ms;
+}
+
+
+.card:hover .card-content > *:not(.card-title),
+.card:focus-within .card-content > *:not(card-title) {
+    opacity: 1;
+    transition-delay: 1000ms;
+}
+
+.card-title {
+    width: max-content;
+    padding: 0;
+    color: var(--color-gold);
+    text-shadow: 0 .2rem .5rem black;
+}
+
+.card-title::after {
+    position: absolute;
+    left: calc(var(--padding) * -1);
+    bottom: -.1rem;
+    height: .2rem;
+    width: calc(100% + var(--padding));
+    background: var(--clr-accent-400);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease;
+}
+
+.card:hover .card-title::after,
+.card:focus-within .card-title::after {
+    transform: scaleX(1);
+}
+
+.card-body {
+    color: rgb(255 255 255 / 0.85);
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--clr-neutral-900);
+    background-color: var(--clr-accent-400);
+    padding: 0.5em 1.25em;
+    border-radius: 0.25em;
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--clr-neutral-100);
+}
+
+.card1 .card-body {
+    font-size: 2rem;
+}
+
+/* BACKGROUND CARDS */
+.card2 {
+    background-image: url(/assets/hockey-player-black-sportswear-white-helmet-holds-gaming-stick-grey-background.jpg);
+    background-position-x: 55%;
+    text-align: start;
+}
+
+.card3 {
+    background-image: url(/assets/winter-612x612.jpg);
+    background-position-x: 50%;
+}
+
+.card2 .card-body {
+    padding: .9rem;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    text-shadow: 0 .2rem 1rem black;
+    right: 1rem;
+}
+
+.card3 .card-body {
+    padding: .2rem;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    text-shadow: 0 .2rem .5rem black;
+}
+
+/* PIE DE PÁGINA */
+footer {
+    background: hsl(0 0% 0% / 0.5);
+    box-shadow: 0 .2rem .9rem black;
+    text-shadow: 0 .2rem .2rem black;
+    border-radius: .30rem;
+    color: var(--color-gold);
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+/* ABOUT DISEÑO 3 CSS */
+.main-about3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 150vh;
+    width: 100%;
+    gap: 3rem;
+    /* margin-top: 2rem; */
+    background: linear-gradient(rgba(4, 24, 32, 0.219) 20%,rgba(245, 2, 2, 0.164) 100%);
+    background-blend-mode:darken;
+}
+
+.article-about {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    justify-content: space-evenly;
+    box-shadow: 0 .2rem .5rem black;
+    border-radius: .25rem;
+    padding: 0;
+    color: var(--color-gold);
+    height: 120vh;
+    padding: 1rem;
+    font-size: 1.3rem;
+    margin-left: 3rem;
+}
+
+.article-about h3 {
+    color: rgba(245, 245, 245, 0.432);
+    text-shadow: 0 .2rem .1rem black;
+    width: 20%;
+    padding: .5rem;
+    border-radius: .25rem;
+}
+
+.article-about p {
+    text-shadow: 0 .2rem .1rem black;
+}
+
+.article-about p:hover {
+    background: var(--clr-neutral-900);
+    border-radius: .50rem;
+    padding: .5rem;
+    box-shadow: 0 .2rem .5rem black;
+    transition-duration: .6s;
+    transition-delay: .1s;
+    transform: scaleY(3.8);
+    transform: scale(1.1);
+}
+
+
+.card4 {
+    background-image: url(/assets/man-hockey-612x612.jpg);
+    background-position-x: 40%;
+    font-size: .7rem;
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-end;
+    margin: 0 3rem 1rem 0;
+    height: 100%;
+    font-weight: bolder;
+    width: 20vw;
+}
+
+/* CONTACT DISEÑO 3 CSS */
+
+.main-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 85vh;
+    background: linear-gradient(rgba(4, 24, 32, 0.219) 20%,rgba(245, 2, 2, 0.164) 100%);
+    background-blend-mode:darken;
+}
+
+.card5 {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-image: url(/assets/public-ice-hockey-612x612.jpg);
+    width: 50vw;
+    margin: 2rem;
+    font-size: 1rem;
+    overflow: hidden;
+    border-radius: 0.25rem;
+    transition: transform 500ms ease;
+    text-shadow: 0 .1rem .3rem black;
+    color: var(--color-gold);
+}
+
+/* RULES STYLES */
+.main-rules {
+    display: flex;
+    flex-direction: column;
+    height: 125vh;
+    background: linear-gradient(rgba(4, 24, 32, 0.219) 20%,rgba(245, 2, 2, 0.164) 100%);
+    background-blend-mode:darken;
+    font-weight: 900;
+    font-size: 1.3rem;
+    box-shadow: 0 .2rem .5rem black;
+    padding: 2rem;
+}
+
+.subtitle-rules {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: .25rem;
+    padding: 2.5rem;
+    box-shadow: 0 .2rem .5rem rgba(4, 24, 32, 0.219);
+    font-size: 2rem;
+} 
+
+.content-list {
+    color: var(--color-gold);
+    text-shadow: 0 .1rem .2rem black;
+    font-size: 1.5rem;
+}
+
+dt h2 {
+    color: rgba(245, 245, 245, 0.432);
+    text-shadow: 0 .1rem .2rem black;
+    text-decoration: underline;
+    font-size: 2.1rem;
+
+}
+
+dl dd {
+    color: var(--color-gold);
+}
+
+.all-play-dd {
+    color: var(--color-gold);
+    text-shadow: var(--shadow-txt);
+}
+
+ol li {
+    color: var(--color-gold);
+    text-shadow: var(--shadow-txt);
+}
+
+ol p {
+    color: rgba(245, 245, 245, 0.432);
+    text-shadow: var(--shadow-txt);
+}
+
+ul {
+    padding-top: .5rem;
+}
+
+ul li {
+    color: rgba(245, 245, 245, 0.432);
+    text-shadow: var(--shadow-txt);
+    padding-top: .5rem;
+    
+}
+
+/* TABLAS CSS*/
+
+.main-game {
+    height: 170vh;
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    border: collapse ;
+    /* background-color: rgb(1,1,39); */
+    background: rgb(17, 1, 59);
+}
+  
+/*CAPTION*/
+table {
+    caption-side: bottom;
+    font-family: var(--texto-primario);
+    font-weight: bold;
+    text-align: left;
+    font-style: italic;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+    margin: 5rem;
+    height: 50vh;
+    color: var(--clr-accent-400);
+    text-shadow: var(--shadow-txt);
+    /* border-radius: .25rem; */
+}
+/*THEAD*/
+thead {
+    background: black;
+    color:aliceblue;
+    /* border-radius: .25rem; */
+    box-shadow: 0 .2rem .5rem var(--clr-neutral-900);
+}
+/* TBODY */
+
+tbody {
+    /* border-radius: .25rem; */
+    box-shadow: 0 .1rem .2rem var(--shadow-txt);
+}
+
+tbody td:hover {
+    background-color: hsl(0 0% 0% / 0.5);
+    color: var(--color-gold);
+    text-shadow: var(--shadow-txt);
+    transition-duration: .4s;
+}
+  
+
+/*COLGROUP*/
+.descripcion {
+    background: var(--clr-neutral-900);
+    background-blend-mode: color-burn;
+    width: 10vw;
+    border-radius: .25rem;
+    
+}
+.detalles{
+    background: var(--clr-neutral-900);
+    width: 50vw;
+}
+.game-section {
+    display: flex;
+    flex-direction: column;
+}
+
+/*GAME INFO CSS*/
+div span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: aliceblue;
+    margin-top: 1.5rem;
+}
+.info {
+    color: aliceblue;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+.coordinator {
+    color: aliceblue;
+    margin-left: 1rem;
+}
+#game {
+    text-align:justify;
+  font-style: italic;
+  font-weight: bold;
+  font-size:xx-large;
+}
+
+.caption {
+    margin-top: 1rem;
+    caption-side: bottom;
+}
+
+/* INFORMACIÓN ADICIONAL */
+.add-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: 2;
+}
